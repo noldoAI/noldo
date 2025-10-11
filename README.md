@@ -1,3 +1,5 @@
+zoraInsights are good at reports, we need to make it live data oriented - what people want NOW!
+
 Clearly highlight niche opportunities with higher "market opportunity" and "willingness to pay" scores, emphasizing specialized problems and potential revenue streams for users.
 
 -----------------------------
