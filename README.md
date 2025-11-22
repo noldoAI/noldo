@@ -1,103 +1,117 @@
-zoraInsights are good at reports, we need to make it live data oriented - what people want NOW!
+# 🦉 Noldo.ai — Internal Master Protocol
+**Version:** 1.0 (Private Beta)
+**Objective:** Build the world's most aggressive intent-detection engine.
 
-Clearly highlight niche opportunities with higher "market opportunity" and "willingness to pay" scores, emphasizing specialized problems and potential revenue streams for users.
+---
 
------------------------------
+## 🎯 1. The North Star (Mission)
+We are **not** building a social listening tool (like Sprout Social or Mention). Those are "Vitamins" used for vanity metrics.
+We are building a **Revenue Weapon (Painkiller)**.
 
-noldo.ai — "We don't guess what users want — we know."
+* **Our Only Metric that Matters:** `Leads Generated Per User (LGPU)`.
+* **The Core Philosophy:** "Don't show me data. Show me who to sell to, and write the message for me."
 
-💡 What’s the Problem? Every day, thousands of people vent their frustrations on Reddit about products, services, and tools they use. Hidden within these complaints are authentic, high-value pain points, representing unmet needs and opportunities. Yet, no one systematically tracks these insights—until now.
+---
 
-🔍 What Does noldo.ai Do? noldo.ai is an AI-driven intelligence platform that continuously monitors Reddit to detect, track, and analyze genuine user complaints and frustrations. We transform scattered user feedback into structured, actionable insights.
+## ⚙️ 2. The Core Product Logic (The "Dual Engine")
+Development must strictly separate the backend logic into these two distinct pipelines.
 
-Unlike generic trend-spotting tools, we:
+### 🔴 Engine A: The Competitor Poach (Red Mode)
+* **Input:** User inputs a `Competitor Name` (e.g., Salesforce).
+* **Logic:**
+    1.  Monitor Subreddits (r/SaaS, r/Sales) for the brand name.
+    2.  **Sentiment Filter:** Discard positive/neutral mentions. Keep only `Negative` sentiment.
+    3.  **Context Filter:** Must contain specific trigger words (`expensive`, `slow`, `down`, `buggy`, `switch`).
+* **Output:** "Hot Lead" flagged for immediate intervention.
 
-Surface real-world demand signals directly from users.
+### 🔵 Engine B: The Problem Trap (Blue Mode)
+* **Input:** User inputs a `Workflow/Pain` (e.g., Manual Data Entry).
+* **Logic:**
+    1.  Monitor broader industry subreddits.
+    2.  **Semantic Search:** Look for "Help me" signals (`how to automate`, `sick of doing`, `best tool for`).
+    3.  **Solution Gap:** Identify posts with high upvotes but *no clear solution* in comments.
+* **Output:** "Opportunity" flagged for education-first outreach.
 
-Provide clarity by structuring complaints by severity, growth momentum, persona, and thematic clusters.
+---
 
-Enable precise discovery, filtering, and alerts, ensuring users act quickly and effectively.
+## 🏗️ 3. Technical Architecture (High Level)
 
+### A. Data Ingestion Layer
+* **Source:** Reddit API / Scrapers (Puppeteer fallback).
+* **Frequency:** Real-time (Active Polling) for "Meltdown Alerts." Hourly for standard keywords.
+* **Storage:** Raw JSON dumps of threads $\rightarrow$ MongoDB.
 
-🚀 New Marketing Feature Just type your business niche or interest, and noldo.ai instantly identifies and connects you with real users expressing frustrations in your exact domain. Our automated interaction tools help you initiate direct engagement, ensuring you never miss opportunities for meaningful customer connections.
+### B. The Intelligence Layer (The "Brain")
+* **Step 1 (Noise Filter):** Lightweight NLP model to discard 90% of irrelevant posts (memes, news).
+* **Step 2 (Intent Scoring):** OpenAI/Anthropic API call to grade remaining posts from 0-100 on "Purchase Intent."
+    * *Threshold:* Only display leads with score > 75 to the user.
+* **Step 3 (Draft Generation):**
+    * If `Intent > 85`: Generate "Trojan Horse" reply (Value first, product second).
 
-🔧 How it Works
-
-1. Monitor Reddit: Continuously scan high-value, targeted subreddits.
-
-
-2. Detect Complaints: AI-powered extraction identifies user frustrations from millions of posts and comments.
-
-
-3. Enrich Insights: Assign severity, growth momentum, target persona, and categorize themes clearly.
-
-
-4. Automate Engagement: Instantly match businesses to real-time complaints and enable automated outreach or personalized interactions.
-
-
-5. Actionable Interface: Searchable, filterable insights with real-time alerts for emerging opportunities.
-
-
-
-👥 Who is it For?
-
-Startup Founders: Uncover validated, high-potential problems.
-
-Product Managers: Stay ahead by tracking real-time user dissatisfaction.
-
-Researchers and VCs: Discover unmet market needs backed by data.
-
-Indie Hackers & Makers: Identify real opportunities swiftly and efficiently.
-
-
-🧠 What Makes Us Different?
-
-Demand Accuracy: We don't guess—our insights are based on actual complaints.
-
-Automated Engagement: Directly interact with frustrated users at scale.
-
-Contextual Clarity: Comprehensive understanding of who’s frustrated, why, and how urgently.
-
-
-⚡ Example Insight “Over 3,000 Reddit users this month expressed frustration with bloated AI productivity apps, calling them slow, complex, and distracting.”
-
-Severity: High
-
-Momentum: Rapidly Rising
-
-Persona: Solo founders & developers
-
-Suggested Action: Explore and validate market demand for lightweight, streamlined task management tools.
-
-
-💸 Business Model SaaS-based freemium model:
-
-Free Tier: Access basic insights, trending complaint themes.
-
-Paid Tiers: Detailed analytics, advanced search filters, direct user outreach automation, customizable alerts, and data export capabilities.
-
-
-🌟 Opportunities for Expansion
-
-Integration Partners: Offer API integrations to enhance product discovery tools, CRM platforms, and customer feedback management systems.
-
-Predictive Analytics: Develop predictive capabilities to anticipate emerging frustrations based on early signals.
-
-Industry-specific Dashboards: Specialized insight dashboards tailored to sectors such as fintech, e-commerce, SaaS, and health tech.
-
-
-🎯 The Vision noldo.ai will become the world's go-to pain radar, empowering businesses to confidently invest resources where real user demand exists. No surveys, no assumptions—just actionable insights derived from authentic user experiences at scale.
-
-That's noldo.ai—clear, actionable, and precisely valuable.
+### C. The Frontend (The "Terminal")
+* **Stack:** Next.js, Tailwind CSS, Shadcn UI.
+* **Aesthetic:** Dark Mode, High Contrast, Monospace Data, "Stock Market" visualization.
+* **Critical UX:** One-click "Copy Draft" button.
 
 
 
-noldo.ai — Turn Real Frustrations Into Real Opportunities
+---
 
-1. Detect Pain Points: We scan Reddit to uncover what users are frustrated with — in real time.
+## 🤖 4. The "Trojan Horse" Prompt Strategy
+*Strict guidance for Prompt Engineering Team.*
 
+The AI must **never** sound like a bot.
+* **❌ Bad Output:** "Hello! I saw you hate Jira. Try Noldo, it is better." (Instant Ban).
+* **✅ Good Output:** "I ran into that same lag issue with Jira sprints last month. It's usually a caching error. I ended up switching to [Noldo] for our team which fixed the load times, but if you want to stay on Jira, try clearing your project cache." (Helpful + Soft Sell).
 
-2. Find Your Market: Just type your idea or product — we match you with people who have that exact problem.
+---
 
+## 💰 5. Monetization & Business Logic
 
-3. Engage Automatically: Reach out directly to your potential customers through smart, AI-powered interactions.
+### The "Hook" (Free Tier / Lead Magnet)
+* **Goal:** User Registration.
+* **Feature:** "The Meltdown Alert."
+    * User can track *one* competitor.
+    * If that competitor has a spike in negative sentiment (server outage), we email the user immediately.
+    * *Why:* This builds trust and urgency.
+
+### The "Product" (Pro Tier - $99/mo)
+* **Goal:** MRR.
+* **Feature:** Unlimited "Intent Scanning."
+* **Feature:** The "AI Reply Writer."
+* **Feature:** Access to "Budget Detection" (posts where users mention specific $ amounts).
+
+### The "Scale" (Enterprise - Custom)
+* **Goal:** High LTV.
+* **Feature:** API Access (Pipe leads directly into their HubSpot/Salesforce).
+* **Feature:** "Team Hunting" (Multiple seats).
+
+---
+
+## 🗺️ 6. Roadmap (Phases)
+
+### Phase 1: The MVP (Current Focus)
+* [ ] Reddit Ingestion Pipeline operational.
+* [ ] Basic Keyword Matching (No AI yet).
+* [ ] Frontend: "Dark Finance" Dashboard.
+* [ ] Auth & Stripe Integration.
+
+### Phase 2: The "Smart" Layer (Next 30 Days)
+* [ ] Integrate LLM for "Intent Scoring" (Filter the noise).
+* [ ] Build "Trojan Horse" Reply Generator.
+* [ ] Implement "Meltdown" Push Notifications.
+
+### Phase 3: The Ecosystem (Q2 Goal)
+* [ ] Slack/Discord Webhooks (Send leads to where the user works).
+* [ ] Chrome Extension (Overlay Noldo data directly on Reddit.com).
+
+---
+
+## ⚠️ 7. Risks & Mitigations
+
+* **Risk:** Reddit API pricing/blocking.
+    * *Mitigation:* Build a diversified scraper network; explore intent data from Twitter/X and LinkedIn as backups.
+* **Risk:** Users getting banned for spamming.
+    * *Mitigation:* Implement daily reply limits in the UI. Force "Review" step before sending.
+* **Risk:** "Empty State" (User searches for niche with no data).
+    * *Mitigation:* If no live data, show historical data (Last 90 Days) so the dashboard never looks broken.
