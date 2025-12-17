@@ -2,7 +2,11 @@
 
 
 
+1. problems my customer have
+    - list of problems my customer have
+        - problem detail(stats + source reference)
 
-1. subreddit pain poinst
+
+3. subreddit pain poinst
     - list of pain points
         - pain point details(stats + source reference)
